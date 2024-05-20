@@ -22,8 +22,8 @@ class Queue:
         return None
 
     def is_empty(self):
-        return len(self.items) == 0```
-
+        return len(self.items) == 0
+```
 + __init__: Initializes an empty list to store queue items.
 + enqueue: Adds an item to the end of the queue.
 + dequeue: Removes and returns the item from the front of the queue. Returns None if the queue is empty.
@@ -43,7 +43,8 @@ class CustomSet:
         return item in self.elements
 
     def get_all_elements(self):
-        return list(self.elements.keys())```
+        return list(self.elements.keys())
+```
         
 + __init__: Initializes an empty dictionary to store set elements.
 + add: Adds an item to the set.
@@ -63,7 +64,8 @@ friends_graph = {
     'Q': ['S', 'T', 'D'],
     'U': ['H', 'J'],
     'V': ['W', 'X', 'Y', 'Z']
-}```
+}
+```
 
 ### List All Candidates Function
 This function lists all reachable friends from a given starting person using a breadth-first search algorithm:
@@ -84,7 +86,8 @@ def list_all_candidates(first_person):
                 if not contacted.contains(friend):
                     contacted.add(friend)
                     queue.enqueue(friend)
-    return contacted.get_all_elements() ```
+    return contacted.get_all_elements()
+```
 
 +Initializes a custom set (contacted) to keep track of visited nodes and a queue (queue) for BFS.
 + Starts the traversal with the first_person.
@@ -143,6 +146,7 @@ if __name__ == "__main__":
         print(f"The candidate '{start_person}' is not found in the friends graph.")
     else:
         result = list_all_candidates(start_person)
-        print(f"Contacted candidates starting from {start_person}: {result}") ```
+        print(f"Contacted candidates starting from {start_person}: {result}")
+```
 
 This code allows you to enter a starting person interactively and lists all reachable friends.
