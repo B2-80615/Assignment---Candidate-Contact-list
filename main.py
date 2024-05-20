@@ -63,12 +63,52 @@ def list_all_candidates(first_person):
     return contacted.get_all_elements()
 
 
-if __name__ == "__main__":
-    start_person = input("Enter the starting candidate: ").strip().upper()
+# test cases to automate the testing
+def test_list_all_candidates():
+    # Test case 1: Starting from 'A'
+    # Expected output: ['A', 'B', 'C', 'J', 'V', 'W', 'X', 'Y', 'Z']
+    assert set(list_all_candidates('A')) == set(['A', 'B', 'C', 'J', 'V', 'W', 'X', 'Y', 'Z'])
 
-    # Check if the starting person is in the graph
-    if not any(start_person in friends for friends in friends_graph.values()) and start_person not in friends_graph:
-        print(f"The candidate '{start_person}' is not found in the friends graph.")
-    else:
-        result = list_all_candidates(start_person)
-        print(f"Contacted candidates starting from {start_person}: {result}")
+    # Test case 2: Starting from 'D'
+    # Expected output: ['D', 'E', 'F', 'G']
+    assert set(list_all_candidates('D')) == set(['D', 'E', 'F', 'G'])
+
+    # Test case 3: Starting from 'H'
+    # Expected output: ['H', 'I', 'K', 'V', 'L', 'M', 'N', 'A', 'B', 'C', 'J', 'W', 'X', 'Y', 'Z']
+    assert set(list_all_candidates('H')) == set(['H', 'I', 'K', 'V', 'L', 'M', 'N', 'A', 'B', 'C', 'J', 'W', 'X', 'Y', 'Z'])
+
+    # Test case 4: Starting from 'M'
+    # Expected output: ['M'] because 'M' is not connected in the graph directly
+    assert set(list_all_candidates('M')) == set(['M'])
+
+    # Test case 5: Starting from 'O'
+    # Expected output: ['O', 'P', 'V', 'U', 'W', 'X', 'Y', 'Z', 'H', 'I', 'K', 'L', 'M', 'N', 'A', 'B', 'C', 'J']
+    assert set(list_all_candidates('O')) == set(['O', 'P', 'V', 'U', 'W', 'X', 'Y', 'Z', 'H', 'I', 'K', 'L', 'M', 'N', 'A', 'B', 'C', 'J'])
+
+    # Test case 6: Starting from 'Q'
+    # Expected output: ['Q', 'S', 'T', 'D', 'E', 'F', 'G']
+    assert set(list_all_candidates('Q')) == set(['Q', 'S', 'T', 'D', 'E', 'F', 'G'])
+
+    # Test case 7: Starting from 'U'
+    # Expected output: ['U', 'H', 'J', 'I', 'K', 'V', 'W', 'X', 'Y', 'Z', 'L', 'M', 'N', 'A', 'B', 'C']
+    assert set(list_all_candidates('U')) == set(['U', 'H', 'J', 'I', 'K', 'V', 'W', 'X', 'Y', 'Z', 'L', 'M', 'N', 'A', 'B', 'C'])
+
+    # Test case 8: Starting from 'Z'
+    # Expected output: ['Z'] because 'Z' is not connected in the graph directly
+    assert set(list_all_candidates('Z')) == set(['Z'])
+
+    print("All tests passed!")
+
+if __name__ == "__main__":
+    test_list_all_candidates()
+
+# To check Custom test cases
+# if __name__ == "__main__":
+#     start_person = input("Enter the starting candidate: ").strip().upper()
+#
+#     # Check if the starting person is in the graph
+#     if not any(start_person in friends for friends in friends_graph.values()) and start_person not in friends_graph:
+#         print(f"The candidate '{start_person}' is not found in the friends graph.")
+#     else:
+#         result = list_all_candidates(start_person)
+#         print(f"Contacted candidates starting from {start_person}: {result}")
